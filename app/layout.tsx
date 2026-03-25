@@ -26,8 +26,18 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+      />
+
+      <body className="min-h-full flex flex-col w-full items-center">
+        <div className="w-full min-h-screen md:w-3/4 lg:w-2/5 md:border-x border-black/10 dark:border-white/10">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
