@@ -1,7 +1,7 @@
 // app/api/[slug]/route.ts
 export async function GET(
   req: Request,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   const { slug } = await params;
 

@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import Navbar from "../components/ui/navbar";
-import { FatSecretResponse } from "@/types/fatsecret";
 import { FoodProps } from "@/types/search_v1_type";
 import { Search } from "lucide-react";
 import Link from "next/link";
