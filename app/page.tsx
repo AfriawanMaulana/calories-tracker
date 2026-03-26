@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { EllipsisIcon, Flame } from "lucide-react";
-import Navbar from "./components/ui/navbar";
+import { getDataAnak } from "@/lib/auth/session";
 
-export default function Page() {
+export default async function Page() {
+  const dataAnak = await getDataAnak();
+
   return (
     <div className="">
-      <Navbar />
-
       <section className="px-6 pt-4 space-y-4">
         <h1 className="font-bold text-3xl">Hi, Mom!</h1>
         <div className="flex relative w-full">
@@ -16,8 +16,17 @@ export default function Page() {
               <p className="font-black text-3xl">Normal</p>
             </div>
             <div className="absolute left-6 bottom-2 border-t border-white/30 py-2">
-              <p>Berat: 15 kg | Tinggi: 85 cm</p>
-              <p>Usia - 3 tahun</p>
+              <p>Nama: {dataAnak?.name ?? "-"}</p>
+              <p>
+                Berat: {dataAnak?.weight ? `${dataAnak.weight} kg` : "-"} |
+                Tinggi: {dataAnak?.height ? `${dataAnak?.height} cm` : "-"}
+              </p>
+              <p>
+                Usia:{" "}
+                {dataAnak?.age
+                  ? `${dataAnak?.age} ${dataAnak.ageDetail.toLowerCase()}`
+                  : "-"}
+              </p>
             </div>
             <Image
               src={"/images/banner.png"}

@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import Navbar from "../components/ui/navbar";
 
 interface DataProps {
   items: [
@@ -52,8 +51,6 @@ export default function NutritionPage() {
 
   return (
     <div>
-      <Navbar />
-
       <div className="p-6 space-y-6">
         <h1 className="text-center font-bold text-3xl">Cek Makanan-Mu</h1>
         <textarea

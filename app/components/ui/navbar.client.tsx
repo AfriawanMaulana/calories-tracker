@@ -11,7 +11,7 @@ const navLinks = [
     path: "/",
   },
   {
-    name: "Data",
+    name: "Data Anak",
     path: "/data",
   },
   {
@@ -24,13 +24,9 @@ const navLinks = [
   },
 ];
 
-export default function Navbar() {
+export default function NavbarClient({ isLoggedIn }: { isLoggedIn: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
   const pathName = usePathname();
-
-  // const handleButton = (e: React.SyntheticEvent) => {
-  //   e.preventDefault();
-  // }
 
   return (
     <nav className="flex sticky top-0 z-50 justify-between px-4 items-center w-full h-18 shadow-sm shadow-black/5 backdrop-blur-lg">
@@ -56,6 +52,14 @@ export default function Navbar() {
             {nav.name}
           </Link>
         ))}
+
+        {!isLoggedIn && (
+          <Link href={"/login"}>
+            <button className="btn btn-success w-full text-white h-8">
+              Sign In
+            </button>
+          </Link>
+        )}
       </div>
     </nav>
   );

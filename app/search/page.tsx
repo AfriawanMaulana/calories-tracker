@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import Navbar from "../components/ui/navbar";
 import { FoodProps } from "@/types/search_v1_type";
 import { Search } from "lucide-react";
 import Link from "next/link";
@@ -26,8 +25,6 @@ export default function SearchFoodPage() {
 
   return (
     <div>
-      <Navbar />
-
       <div className="p-6 space-y-6">
         <div className="text-center font-bold text-3xl flex w-full gap-4 items-center justify-center">
           <Search />
