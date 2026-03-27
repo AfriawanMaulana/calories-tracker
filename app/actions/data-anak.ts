@@ -21,6 +21,7 @@ export async function DataAnakAction(
       },
       values: {
         name: "",
+        gender: "",
         age: "",
         ageDetail: "",
         weight: "",
@@ -31,6 +32,7 @@ export async function DataAnakAction(
 
   const rawData = {
     name: formData.get("name") as string,
+    gender: formData.get("gender") as string,
     age: formData.get("age") as string,
     ageDetail: formData.get("ageDetail") as string,
     weight: formData.get("weight") as string,
@@ -46,7 +48,7 @@ export async function DataAnakAction(
   }
 
   try {
-    const { name, age, ageDetail, weight, height } = result.data;
+    const { name, gender, age, ageDetail, weight, height } = result.data;
 
     const existingData = await getDataAnak();
 
@@ -55,6 +57,7 @@ export async function DataAnakAction(
         .update(dataAnak)
         .set({
           name,
+          gender,
           age: String(age),
           ageDetail,
           weight: String(weight),
@@ -65,6 +68,7 @@ export async function DataAnakAction(
       await db.insert(dataAnak).values({
         userId: user.id,
         name,
+        gender,
         age: String(age),
         ageDetail,
         weight: String(weight),

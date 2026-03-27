@@ -1,6 +1,7 @@
 import { numeric, pgTable, timestamp, text, pgEnum } from "drizzle-orm/pg-core";
 
 export const ageDetailEnum = pgEnum("age_detail_type", ["TAHUN", "BULAN"]);
+export const genderEnum = pgEnum("gender_type", ["LAKI-LAKI", "PEREMPUAN"]);
 
 export const users = pgTable("users", {
   id: text("id")
@@ -23,6 +24,7 @@ export const dataAnak = pgTable("data_anak", {
     .references(() => users.id, { onDelete: "cascade" })
     .notNull(),
   name: text("name").notNull(),
+  gender: genderEnum("gender").default("LAKI-LAKI").notNull(),
   age: numeric("age").notNull(),
   ageDetail: ageDetailEnum("age_detail").default("TAHUN").notNull(),
   weight: numeric("weight").notNull(),

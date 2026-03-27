@@ -27,7 +27,7 @@ export async function GET(
     );
 
   const res = await fetch(
-    `https://platform.fatsecret.com/rest/food/v5?method=food.get.v5&food_id=${id}&include_food_images=true&format=json&region=ID&language=id`,
+    `https://platform.fatsecret.com/rest/food/v5?method=food.get.v5&food_id=${id}&include_food_attributes=true&include_sub_categories=true&include_food_images=true&format=json&region=ID&language=id`,
     {
       headers: {
         Authorization: `Bearer ${accessToken}`,

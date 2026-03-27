@@ -4,7 +4,14 @@ import { DataAnakAction } from "@/app/actions/data-anak";
 
 const initialState = {
   errors: {} as Record<string, string[]>,
-  values: { name: "", age: "", ageDetail: "", weight: "", height: "" },
+  values: {
+    name: "",
+    gender: "",
+    age: "",
+    ageDetail: "",
+    weight: "",
+    height: "",
+  },
 };
 
 export default function DataAnakForm({
@@ -12,6 +19,7 @@ export default function DataAnakForm({
 }: {
   data: {
     name: string | null;
+    gender: string | null;
     age: string | null;
     ageDetail: string | null;
     weight: string | null;
@@ -91,6 +99,29 @@ export default function DataAnakForm({
           </div>
           {formState?.errors?.age?.length ? (
             <p className="text-sm text-red-600">{formState.errors.age[0]}</p>
+          ) : null}
+        </fieldset>
+
+        <fieldset className="flex flex-col gap-2">
+          <label>Jenis Kelamin</label>
+          <select
+            id="gender"
+            name="gender"
+            defaultValue={
+              formState.values.gender !== ""
+                ? formState.values.gender
+                : data.gender ?? "LAKI-LAKI"
+            }
+            disabled={isPending}
+            className="select w-full"
+            required
+          >
+            <option disabled>-</option>
+            <option value={"LAKI-LAKI"}>Laki-laki</option>
+            <option value={"PEREMPUAN"}>Perempuan</option>
+          </select>
+          {formState?.errors?.weight?.length ? (
+            <p className="text-sm text-red-600">{formState.errors.weight[0]}</p>
           ) : null}
         </fieldset>
 

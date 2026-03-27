@@ -7,6 +7,7 @@ export default async function DataAnakPage() {
     <DataAnakForm
       data={{
         name: data?.name ?? "",
+        gender: data?.gender ?? "",
         age: data?.age ?? "",
         ageDetail: data?.ageDetail ?? "TAHUN",
         weight: data?.weight ?? "",

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { EllipsisIcon, Flame } from "lucide-react";
 import { getDataAnak } from "@/lib/auth/session";
+import Link from "next/link";
 
 export default async function Page() {
   const dataAnak = await getDataAnak();
@@ -10,7 +11,7 @@ export default async function Page() {
       <section className="px-6 pt-4 space-y-4">
         <h1 className="font-bold text-3xl">Hi, Mom!</h1>
         <div className="flex relative w-full">
-          <div className="flex w-full relative text-white">
+          <Link href={"/a"} className="flex w-full relative text-white">
             <div className="absolute left-6 top-10">
               <h1 className="text-xl">Status Gizi:</h1>
               <p className="font-black text-3xl">Normal</p>
@@ -36,15 +37,26 @@ export default async function Page() {
               loading="eager"
               className="w-full h-52 object-cover rounded-2xl"
             />
-            <Image
-              src={"/images/hero-boy.png"}
-              alt=""
-              width={150}
-              height={100}
-              loading="eager"
-              className="absolute w-auto h-auto right-0 bottom-0"
-            />
-          </div>
+            {dataAnak?.gender.toLowerCase() === "perempuan" ? (
+              <Image
+                src={"/images/hero-girl.png"}
+                alt=""
+                width={150}
+                height={100}
+                loading="eager"
+                className="absolute w-auto h-auto right-0 bottom-0"
+              />
+            ) : (
+              <Image
+                src={"/images/hero-boy.png"}
+                alt=""
+                width={150}
+                height={100}
+                loading="eager"
+                className="absolute w-auto h-auto right-0 bottom-0"
+              />
+            )}
+          </Link>
         </div>
       </section>
 
