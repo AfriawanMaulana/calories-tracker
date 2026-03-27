@@ -28,7 +28,7 @@ export default function FoodDetail({
       });
   }, [id]);
 
-  const getNutritions = data?.food.servings.serving.find(
+  const getNutritions = data?.food?.servings?.serving.find(
     (serving) => serving.serving_id === servingId
   );
 
@@ -38,9 +38,9 @@ export default function FoodDetail({
   return (
     <div className="p-6 space-y-4">
       <div className="group cursor-pointer relative overflow-hidden rounded-2xl">
-        {data?.food.food_images?.food_image && (
+        {data?.food?.food_images?.food_image && (
           <Image
-            src={data?.food.food_images?.food_image[0].image_url}
+            src={data?.food?.food_images?.food_image[0].image_url}
             alt=""
             width={200}
             height={200}
@@ -63,14 +63,14 @@ export default function FoodDetail({
           .slice(0, 5)}
       </div>
 
-      {data?.food.servings.serving && (
+      {data?.food?.servings?.serving && (
         <div>
           <select
             value={servingId}
             className="select w-full font-semibold text-lg"
             onChange={(e) => setServingId(e.currentTarget.value)}
           >
-            {data?.food.servings.serving.map((serv, index) => (
+            {data?.food?.servings?.serving.map((serv, index) => (
               <option
                 key={index}
                 value={serv.serving_id}
