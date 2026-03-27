@@ -15,7 +15,7 @@ export async function GET(req: Request) {
         ).toString("base64"),
       "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: "grant_type=client_credentials&scope=premier",
+    body: "grant_type=client_credentials",
   });
 
   const tokenData = await tokenRes.json();
