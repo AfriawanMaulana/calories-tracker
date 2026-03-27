@@ -19,12 +19,14 @@ export default function SearchFoodPage() {
     );
     const result = await res.json();
 
-    if (result.foods.food) {
+    if (result?.foods?.food) {
       setData(result);
     }
 
     setIsLoading(false);
   };
+
+  console.log("DEBUG:", data);
 
   return (
     <div>
@@ -47,7 +49,7 @@ export default function SearchFoodPage() {
       </div>
 
       <div className="flex flex-col gap-3 p-6">
-        {data?.foods.food.slice(0, 10).map((item, index) => (
+        {data?.foods?.food.slice(0, 10).map((item, index) => (
           <Link
             key={index}
             href={`/search/${item.food_id}`}
@@ -59,7 +61,7 @@ export default function SearchFoodPage() {
         ))}
       </div>
 
-      {data?.foods.food.length === 0 && (
+      {data?.foods?.food.length === 0 && (
         <h1 className="font-semibold text-accent text-xl">Tidak ada hasil</h1>
       )}
     </div>
