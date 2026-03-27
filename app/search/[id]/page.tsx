@@ -32,6 +32,7 @@ export default function FoodDetail({
     (serving) => serving.serving_id === servingId
   );
 
+  console.log(data);
   if (!data) return <Loading />;
 
   return (

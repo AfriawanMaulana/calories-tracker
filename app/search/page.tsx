@@ -19,7 +19,10 @@ export default function SearchFoodPage() {
     );
     const result = await res.json();
 
-    setData(result);
+    if (result.foods.food) {
+      setData(result);
+    }
+
     setIsLoading(false);
   };
 
@@ -44,19 +47,21 @@ export default function SearchFoodPage() {
       </div>
 
       <div className="flex flex-col gap-3 p-6">
-        {data?.foods.food
-          .map((item, index) => (
-            <Link
-              key={index}
-              href={`/search/${item.food_id}`}
-              className="border border-black/10 dark:border-white/10 rounded-lg py-2 px-4 cursor-pointer"
-            >
-              <h1 className="font-semibold text-xl">{item.food_name}</h1>
-              <p className="text-sm opacity-80">{item.food_description}</p>
-            </Link>
-          ))
-          .slice(0, 10)}
+        {data?.foods.food.slice(0, 10).map((item, index) => (
+          <Link
+            key={index}
+            href={`/search/${item.food_id}`}
+            className="border border-black/10 dark:border-white/10 rounded-lg py-2 px-4 cursor-pointer"
+          >
+            <h1 className="font-semibold text-xl">{item.food_name}</h1>
+            <p className="text-sm opacity-80">{item.food_description}</p>
+          </Link>
+        ))}
       </div>
+
+      {data?.foods.food.length === 0 && (
+        <h1 className="font-semibold text-accent text-xl">Tidak ada hasil</h1>
+      )}
     </div>
   );
 }
