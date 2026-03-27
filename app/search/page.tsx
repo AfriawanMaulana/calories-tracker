@@ -19,9 +19,7 @@ export default function SearchFoodPage() {
     );
     const result = await res.json();
 
-    if (result?.foods?.food) {
-      setData(result);
-    }
+    setData(result);
 
     setIsLoading(false);
   };
