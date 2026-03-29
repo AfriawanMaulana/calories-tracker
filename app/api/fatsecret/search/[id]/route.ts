@@ -1,29 +1,14 @@
+import { getAccessToken } from "@/lib/fatsecretToken";
+
+export const runtime = "nodejs";
+
 export async function GET(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
 
-  console.log("=== FatSecret Debug ===");
-  console.log("Food ID:", id);
-  console.log("CLIENT_ID exists:", !!process.env.FATSECRET_CLIENT_ID);
-  console.log("CLIENT_SECRET exists:", !!process.env.FATSECRET_CLIENT_SECRET);
-
-  const tokenRes = await fetch("https://oauth.fatsecret.com/connect/token", {
-    method: "POST",
-    headers: {
-      Authorization:
-        "Basic " +
-        Buffer.from(
-          `${process.env.FATSECRET_CLIENT_ID}:${process.env.FATSECRET_CLIENT_SECRET}`
-        ).toString("base64"),
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: "grant_type=client_credentials",
-  });
-
-  const tokenData = await tokenRes.json();
-  const accessToken = tokenData.access_token;
+  const accessToken = await getAccessToken();
 
   if (!accessToken)
     return Response.json(

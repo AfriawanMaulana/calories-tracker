@@ -11,13 +11,13 @@ export default async function Page() {
       <section className="px-6 pt-4 space-y-4">
         <h1 className="font-bold text-3xl">Hi, Mom!</h1>
         <div className="flex relative w-full">
-          <Link href={"/a"} className="flex w-full relative text-white">
+          <Link href={"/"} className="flex w-full relative text-white">
             <div className="absolute left-6 top-10">
-              <h1 className="text-xl">Status Gizi:</h1>
+              <h1 className="text-xl">Status Gizi, {dataAnak?.name}:</h1>
               <p className="font-black text-3xl">Normal</p>
             </div>
             <div className="absolute left-6 bottom-2 border-t border-white/30 py-2">
-              <p>Nama: {dataAnak?.name ?? "-"}</p>
+              {/* <p>Nama: {dataAnak?.name ?? "-"}</p> */}
               <p>
                 Berat: {dataAnak?.weight ? `${dataAnak.weight} kg` : "-"} |
                 Tinggi: {dataAnak?.height ? `${dataAnak?.height} cm` : "-"}

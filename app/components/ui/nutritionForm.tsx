@@ -41,7 +41,9 @@ export default function NutritionFacts({ data }: { data: Serving | null }) {
 
       <div className="flex items-center justify-between">
         <p className="text-xs pl-4">Trans Fat</p>
-        <p className="text-sm">{}</p>
+        <p className="text-sm">
+          {data?.trans_fat ? `${data.trans_fat}g` : "-"}
+        </p>
       </div>
       <div className="bg-base-content/40 w-full h-0.5 my-1"></div>
 
@@ -103,7 +105,9 @@ export default function NutritionFacts({ data }: { data: Serving | null }) {
 
       <div className="flex items-center justify-between">
         <p className="text-xs">Vitamin D</p>
-        <p className="text-sm">-</p>
+        <p className="text-sm">
+          {data?.vitamin_d ? `${data.vitamin_d}mg` : "-"}
+        </p>
       </div>
       <div className="bg-base-content/40 w-full h-0.5 my-1"></div>
 

@@ -72,6 +72,7 @@ export interface Serving {
   protein: string;
   fat: string;
   saturated_fat: string;
+  trans_fat: string;
 
   polyunsaturated_fat: string;
   monounsaturated_fat: string;
@@ -85,6 +86,7 @@ export interface Serving {
 
   vitamin_a: string;
   vitamin_c: string;
+  vitamin_d: string;
   calcium: string;
   iron: string;
 }
